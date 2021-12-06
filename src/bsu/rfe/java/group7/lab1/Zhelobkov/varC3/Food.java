@@ -13,4 +13,11 @@ public abstract class Food implements INutritious, IConsumable{
         this.name = name;
     }
 
+    public boolean equals(Object arg0)         // перегружен метод сравнения
+    {
+        if (!(arg0 instanceof Food)) return false;
+        if (name == null || ((Food) arg0).name == null) return false;
+        return name.equals(((Food) arg0).name);
+    }
+
 }

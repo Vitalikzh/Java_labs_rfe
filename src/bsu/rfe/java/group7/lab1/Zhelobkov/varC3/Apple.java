@@ -21,15 +21,15 @@ public class Apple extends Food{
     }
 
     @Override
-    public boolean equals(Object apple) {
-        if (super.getName().equals(((String[])apple)[0])){
-            if(((String[])apple).length == 2)
-            {
-                return this.size.equals(((String[])apple)[1]);
-            }
-            return true;
-        }
-            return  false;
+    public boolean equals(Object arg0)  // переопределние метода сравнения
+    {
+        if (super.equals(arg0))
+        {
+            if (!(arg0 instanceof Apple)) return false;
+            return size.equals(((Apple)arg0).size);
+        } else
+            return false;
+
 
     }
 

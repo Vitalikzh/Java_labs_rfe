@@ -19,20 +19,15 @@ public class Dessert extends Food{
             }
 
     @Override
-    public boolean equals(Object dessert) {
-
-        if (super.getName().equals(((String[])dessert)[0])){
-            if(((String[])dessert).length == 2)
-            {
-                return this.component1.equals(((String[])dessert)[1]);
-            }
-            if(((String[])dessert).length == 3)
-            {
-                return this.component1.equals(((String[])dessert)[1]) && this.component2.equals(((String[])dessert)[2]);
-            }
-            return true;
-        }
-        return  false;
+    public boolean equals(Object arg0)  // переопределние метода сравнения
+    {
+        if (super.equals(arg0))
+        {
+            if (!(arg0 instanceof Dessert)) return false;
+            if (!(component1.equals(((Dessert)arg0).component1))) return false;
+            return component2.equals(((Dessert)arg0).component2);
+        } else
+            return false;
 
     }
 
@@ -45,7 +40,6 @@ public class Dessert extends Food{
     public int calculateCalories() {
         switch (component1){
             case "bagel": calories = 14; break;
-            case "biscotti": calories = 16;break;
             case "cake": calories = 25;break;
             default:
                 component1 = "something sweet with component 1";
@@ -54,7 +48,6 @@ public class Dessert extends Food{
 
         switch (component2){
             case "cookie": calories += 6; break;
-            case "cracker": calories += 10;break;
             case "donut": calories += 24;break;
             default:
                 component2= "something sweet with component 2";

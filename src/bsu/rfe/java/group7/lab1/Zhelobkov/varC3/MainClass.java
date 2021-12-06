@@ -10,6 +10,16 @@ public class MainClass {
 
         Food[] breakfast = new Food[20];
 
+        int cheeseN = 0, dessertN1 = 0, dessertN2 = 0, dessertN3 = 0, dessertN4 = 0,appleN1 = 0, appleN2 = 0, appleN3 = 0;
+        Apple apple1=new Apple("big");
+        Apple apple2=new Apple("middle");
+        Apple apple3=new Apple("small");
+        Dessert dessert1=new Dessert( "bagel", "cookie");
+        Dessert dessert2=new Dessert( "bagel", "donut");
+        Dessert dessert3=new Dessert( "cake", "cookie");
+        Dessert dessert4=new Dessert( "cake", "donut");
+        Cheese cheese=new Cheese();
+
         boolean logicSort = false;
         boolean logicCalories = false;
         ArrayList<Integer> cheeseArray = new ArrayList<>();
@@ -99,9 +109,35 @@ public class MainClass {
             printMyBreakfast(breakfast);
 
         }
-        System.out.println("Cheeses:" + " " + cheeseArray.size());
-        System.out.println("Apples:" + " " + appleArray.size());
-        System.out.println("Desserts:" + " " + dessertArray.size());
+        for (int i = 0; i < 20; i++) {
+            if (breakfast[i] != null) {
+                if (breakfast[i].equals(apple1)) {
+                    appleN1++; }
+                else if (breakfast[i].equals(apple2)) {
+                    appleN2++; }
+                else if (breakfast[i].equals(apple3)) {
+                    appleN3++; }
+                else if (breakfast[i].equals(cheese)) {
+                    cheeseN++; }
+                else if (breakfast[i].equals(dessert1)) {
+                    dessertN1++; }
+                else if (breakfast[i].equals(dessert2)) {
+                    dessertN2++; }
+                else if (breakfast[i].equals(dessert3)) {
+                    dessertN3++; }
+                else if (breakfast[i].equals(dessert4)) {
+                    dessertN4++; }
+            } else break;
+        }
+        System.out.println("eaten for breakfast:");
+        System.out.println("small Apple: " + appleN3 );
+        System.out.println("middle Apple: " + appleN2);
+        System.out.println("big Apple: " + appleN1);
+        System.out.println("Cheeses:" + cheeseN);
+        System.out.println("Dessert: bagel, cookie: " + dessertN1);
+        System.out.println("Dessert: bagel, donut: " + dessertN2);
+        System.out.println("Dessert: cake, cookie: " + dessertN3);
+        System.out.println("Dessert: cake, donut: " + dessertN4);
 
     }
 

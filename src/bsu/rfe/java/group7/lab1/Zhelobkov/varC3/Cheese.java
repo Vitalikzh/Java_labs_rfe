@@ -6,14 +6,8 @@ public class Cheese extends Food {
     }
 
     public void consume() {
+
         System.out.println(super.getName());
-    }
-    @Override
-    public boolean equals(Object cheese) {
-        if (super.getName().equals(((String[])cheese)[0])){
-            return true;
-        }
-        return  false;
     }
 
     @Override
