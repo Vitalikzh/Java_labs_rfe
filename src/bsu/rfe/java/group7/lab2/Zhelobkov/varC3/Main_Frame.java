@@ -34,30 +34,46 @@ public class Main_Frame extends JFrame
     //вычисление функций
     public Double formula1(Double x, Double y, Double z)
     {
-        if (y==0 || z==0)	{
-                JOptionPane.showMessageDialog(Main_Frame.this,
-                    "y или z не может быть 0", "" +
-                            "Ошибка ввода", JOptionPane.WARNING_MESSAGE);
+        if(x == -1 || x == 0){
+            JOptionPane.showMessageDialog(Main_Frame.this,
+                    "x должен быть больше -1 и не равен 0",
+                    "Ошибка ввода", JOptionPane.WARNING_MESSAGE);
             return 0.0;
         }
 
-        return  (sin(PI*y*y) + log(y*y))/(sin(PI*z*z)+sin(x)+log(z*z)+x*x+exp(cos(z*x)));
+        if(y <= 0){
+            JOptionPane.showMessageDialog(Main_Frame.this,
+                    "у должен быть положительным",
+                    "Ошибка ввода", JOptionPane.WARNING_MESSAGE);
+            return 0.0;
+        }
+
+        return pow(pow(log(1+x),2) + cos(PI*pow(z,3)), sin(y)) + pow(pow(E, pow(x,2)) + cos(pow(E, z)) + sqrt(1/y), 1/x);
     }
-    public Double formula2(Double x, Double y, Double z)
-    {
-        if (x ==0 || z == -1)	{
+
+    public Double formula2(Double x, Double y, Double z) {
+        if (x <= 0) {
             JOptionPane.showMessageDialog(Main_Frame.this,
-                    " z не должен быть равен -1 или x не должен быть равен 0", "" +
-                            "Ошибка ввода", JOptionPane.WARNING_MESSAGE);
+                    "x должен быть положительным",
+                    "Ошибка ввода", JOptionPane.WARNING_MESSAGE);
             return 0.0;
         }
-        if ((cos(exp(y)) + exp(y*y) + sqrt(1/x)) < 0){
+
+        if (y == -1) {
             JOptionPane.showMessageDialog(Main_Frame.this,
-                    "Выражение (cos(exp(y)) + exp(y*y) + sqrt(1/x) должно быть больше 0", "" +
-                            "Ошибка ввода", JOptionPane.WARNING_MESSAGE);
+                    "У должен не равняться -1",
+                    "Ошибка ввода", JOptionPane.WARNING_MESSAGE);
             return 0.0;
         }
-        return pow((cos(exp(y)) + exp(y*y) + sqrt(1/x)),0.25)/ (pow((cos(PI*z*z*z)+log((1+z)*(1+z))),sin(y)));
+
+        if ((cos(PI * pow(x, 3)) + pow(log(1 + y), 2)) < 0) {
+            JOptionPane.showMessageDialog(Main_Frame.this,
+                    "Выражение под корнем должно быть положительным",
+                    "Ошибка ввода", JOptionPane.WARNING_MESSAGE);
+            return 0.0;
+        }
+
+        return pow((cos(PI * pow(x, 3)) + pow(log(1 + y), 2)), 1 / 4) * (pow(E, pow(z, 2)) + sqrt(1 / x) + cos(pow(E, y)));
     }
     // радиокнопки для запоминания значения
     private void addMemoryRadioButton (String buttonName, final int memoryId)	{
@@ -85,8 +101,8 @@ public class Main_Frame extends JFrame
             public void actionPerformed(ActionEvent actionEvent)
             {
                 Main_Frame.this.formula_number = formula_number;
-                if (formula_number == 1)	image.setIcon(new ImageIcon(Main_Frame.class.getResource("formula_1.bmp")));
-                if (formula_number == 2) image.setIcon(new ImageIcon(Main_Frame.class.getResource("formula_2.bmp")));
+                if (formula_number == 1) image.setIcon(new ImageIcon(Main_Frame.class.getResource("formula_1.jpg")));
+                if (formula_number == 2) image.setIcon(new ImageIcon(Main_Frame.class.getResource("formula_2.jpg")));
             }
         });
         radioButtons.add(button);
@@ -105,7 +121,7 @@ public class Main_Frame extends JFrame
         Box picture = Box.createHorizontalBox();
         picture.add(Box.createVerticalGlue());
         picture.add(Box.createHorizontalGlue());
-        image = new JLabel(new ImageIcon(Main_Frame.class.getResource("formula_1.bmp")));
+        image = new JLabel(new ImageIcon(Main_Frame.class.getResource("formula_1.jpg")));
         picture.add(image);
         picture.add(Box.createHorizontalGlue());
         picture.setBorder(BorderFactory.createLineBorder(Color.GRAY));
